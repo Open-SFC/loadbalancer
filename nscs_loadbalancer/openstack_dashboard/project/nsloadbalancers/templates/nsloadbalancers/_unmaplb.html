@@ -1,0 +1,24 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block form_id %}unmap_config_form{% endblock %}
+{% block form_action %}{% url 'horizon:project:nsloadbalancers:unmaplb' config_id lb_id%}{% endblock %}
+
+{% block modal-header %}{% trans "Dettach Loadbalancer Pool" %}{% endblock %}
+
+{% block modal-body %}
+<div class="left">
+    <fieldset>
+    {% include "horizon/common/_form_fields.html" %}
+    </fieldset>
+</div>
+<div class="right">
+    <h3>{% trans "Description:" %}</h3>
+    <p>{% trans "You may dettach Loadbalancer Pool from the configuration here." %}</p>
+</div>
+{% endblock %}
+
+{% block modal-footer %}
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Save Changes" %}" />
+  <a href="{% url 'horizon:project:nsloadbalancers:index' %}" class="btn secondary cancel close">{% trans "Cancel" %}</a>
+{% endblock %}
